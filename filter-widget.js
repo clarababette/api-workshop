@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     filterBtn.addEventListener('click', () => {
         var colorSelected = document.querySelector('.color-options').value;
         var brandSelected = document.querySelector('.brand-options').value;
+        cars.innerHTML = '<div class="loader"></div>'
 
         if (colorSelected !== '' && brandSelected !== '') {
             axios.get(`https://api-tutor.herokuapp.com/v1/cars/make/${brandSelected}/color/${colorSelected}`)
