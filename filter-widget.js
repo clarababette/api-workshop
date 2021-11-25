@@ -9,19 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
     var brands = document.querySelector('.brand-options');
     var filterBtn = document.querySelector('.filter-btn');
 
-    axios.get('http://api-tutor.herokuapp.com/v1/colors')
+    axios.get('https://api-tutor.herokuapp.com/v1/colors')
         .then((response) => {
             colors.innerHTML = optionsTemplate(
                 { options: response.data }
             );
         });
-    axios.get('http://api-tutor.herokuapp.com/v1/cars')
+    axios.get('https://api-tutor.herokuapp.com/v1/cars')
         .then((response) => {
             cars.innerHTML = carsTemplate(
                 { cars: response.data }
             );
         });
-    axios.get('http://api-tutor.herokuapp.com/v1/makes')
+    axios.get('https://api-tutor.herokuapp.com/v1/makes')
         .then((response) => {
             brands.innerHTML = optionsTemplate(
                 { options: response.data }
@@ -33,21 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
         var brandSelected = document.querySelector('.brand-options').value;
 
         if (colorSelected !== '' && brandSelected !== '') {
-            axios.get(`http://api-tutor.herokuapp.com/v1/cars/make/${brandSelected}/color/${colorSelected}`)
+            axios.get(`https://api-tutor.herokuapp.com/v1/cars/make/${brandSelected}/color/${colorSelected}`)
                 .then((response) => {
                     cars.innerHTML = carsTemplate(
                         { cars: response.data }
                     );
                 });
         } else if (colorSelected !== '') {
-            axios.get(`http://api-tutor.herokuapp.com/v1/cars/color/${colorSelected}`)
+            axios.get(`https://api-tutor.herokuapp.com/v1/cars/color/${colorSelected}`)
                 .then((response) => {
                     cars.innerHTML = carsTemplate(
                         { cars: response.data }
                     );
                 });
         } else if (brandSelected !== '') {
-            axios.get(`http://api-tutor.herokuapp.com/v1/cars/make/${brandSelected}`)
+            axios.get(`https://api-tutor.herokuapp.com/v1/cars/make/${brandSelected}`)
                 .then((response) => {
                     cars.innerHTML = carsTemplate(
                         { cars: response.data }
